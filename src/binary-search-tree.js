@@ -109,6 +109,7 @@ class BinarySearchTree {
             if (value < prev.data) {
               prev.left = delnode.right;
             } else prev.right = delnode.right;
+            continue;
           }
           if (delnode.right === null) {
             if (value < prev.data) {
@@ -119,7 +120,9 @@ class BinarySearchTree {
         continue;
       }
       let last = this.find(this.min(delnode.right));
+      let pprev = this.find(last.data);
       delnode.data = last.data;
+      pprev.left = null;
     }
   }
 
